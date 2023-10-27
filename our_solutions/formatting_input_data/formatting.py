@@ -24,4 +24,6 @@ for name_txt in array_name:
         file_path = os.path.join(folder_path, file_name)
         with open(file_path, 'w') as file:
             for item in data:
-                file.write(' '.join(item) + '\n')
+                line_to_write = ''.join(item) + '\n'
+                line_to_write = line_to_write.replace(",", " ")  # Заменяем запятую на пробел
+                file.write(line_to_write)
