@@ -16,7 +16,7 @@ for name_txt in array_name:
         data_dict[photo_num].append(elements[2:])
 
     for photo_num, data in data_dict.items():
-        file_name = f'{photo_num}.txt'
+        file_name = f'{str(photo_num).zfill(5)}.txt'
         file_name = file_name.replace(",", "")
         folder_path = get_path_to_folder_for_transformed_data(name_txt)
         if not os.path.exists(folder_path):
