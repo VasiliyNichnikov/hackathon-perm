@@ -49,40 +49,29 @@
         </div>
         <div class="col-sm min-vh-100">
             <div class="block-1 d-flex">
-                <div class="block-2 col-sm-9 p-3 object-fit-contain position-relative">
-                    {% if image_file %}
-                        <img class="img-block object-fit-contain" src="{{ url_for('static', filename=image_file) }}" alt="Loaded image">
-                    {% elif video_file %}
-                        <video class="video-block object-fit-contain" controls>
-                            <source src="{{ url_for('static', filename=video_file) }}" type="video/mp4"> Your browser does not support the video tag.
-                        </video>
-                    {% endif %}
-                </div>
-                <div class="block-3 col-sm-3 h-100 p-3 overflow-auto">
-                    <div class="list-group-checkable d-grid gap-2">
-                        <label class="l1 list-group-item rounded-3 p-3 border border-primary"
-                               for="listGroupCheckableRadios1">
-                            <strong>Время (кадр)</strong>
-                            <span class="d-block small opacity-50">Стекло:</span>
-                            <span class="d-block small opacity-50">Дерево:</span>
-                            <span class="d-block small opacity-50">Метал:</span>
-                            <span class="d-block small opacity-50">Пластик:</span>
-                        </label>
-
-                        <label class="l1 list-group-item rounded-3 p-3 border border-primary"
-                               for="listGroupCheckableRadios1">
-                            <strong>Время (кадр)</strong>
-                            <span class="d-block small opacity-50">Стекло:</span>
-                            <span class="d-block small opacity-50">Дерево:</span>
-                            <span class="d-block small opacity-50">Метал:</span>
-                            <span class="d-block small opacity-50">Пластик:</span>
-                        </label>
-
-
+                <div class="block-1 col-sm-9 p-3 object-fit-contain position-relative">
+                    <div class="row">
+                        {% if image_file %}
+                            <img class="rounded float-start" src="{{ url_for('static', filename=image_file) }}" alt="Loaded image">
+                        {% endif %}
                     </div>
                 </div>
+                <div class="block-2 col-sm-3 h-100 p-3 overflow-auto">
+                    <div class="list-group-checkable d-grid gap-2">
+                        <label class="l1 list-group-item rounded-3 p-3 border border-primary" for="listGroupCheckableRadios1">
+                            <strong>Данные с изображения:</strong>
+                            {% for message in messages %}
+                                <span class="d-block small opacity-50">{{ message }}</span>
+                            {% endfor %}
+                        </label>
+                    </div>
+
+                    {% if image_chart_file %}
+                        <img class="rounded float-start" src="{{ url_for('static', filename=image_chart_file) }}" alt="Loaded image">
+                    {% endif %}
+                </div>
             </div>
-            <div class="block-4 container p-3" style="display: none;">
+            <div class="block-3 container p-3" style="display: none;">
                 <div class="row">
                     <div class="mx-auto col-lg-6">
                         Бар-чарт с общим кол-вом предметов по каждой категории

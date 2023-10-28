@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, abort
-from app.core.garbage_search import GarbageSearch
+from app.core.controller_by_data_output import ControllerByDataOutput
 from app.core.fileutils import is_video, is_image
 
 module = Blueprint("analytics", __name__)
@@ -7,10 +7,14 @@ module = Blueprint("analytics", __name__)
 
 @module.route("/display/<filename>")
 def analytics_show_media(filename: str) -> str:
-    garage_search = GarbageSearch(filename)
-    garage_search.calculate()
+    try:
+        output = ControllerByDataOutput()
+        view_data = output.get_view_data(filename)
+    except:
+        print("error")
+
     if is_image(filename):
-        return render_template("analytics.html", image_file="upload/" + filename)
+        return render_template("analytics.html", image_file=view_data.box_path, image_chart_file=view_data.chart_path, messages=view_data.messages)
     elif is_video(filename):
-        return render_template("analytics.html", video_file="upload/" + filename)
+        return render_template("analytics.html", video_file="upload/box/" + filename)
     abort(400)

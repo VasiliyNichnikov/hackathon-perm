@@ -35,6 +35,15 @@ def get_image_path(name: str) -> str:
     return os.path.join(get_upload_folder(), name)
 
 
+def get_image_path_after_boxing(name: str) -> str:
+    return os.path.join(get_upload_folder(), f"box/{name}")
+
+
 def get_weight_path() -> str:
     root = get_project_root()
     return os.path.join(root, "static/yolo_weight/weight.pt")
+
+
+def get_chart_path(name_chart: str) -> str:
+    root = get_project_root()
+    return os.path.join(root, f"static/upload/chart/{name_chart}")
