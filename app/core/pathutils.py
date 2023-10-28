@@ -29,3 +29,12 @@ def get_upload_folder() -> str:
     if not os.path.exists(folder):
         os.makedirs(folder)
     return os.path.join(root, "static/upload")
+
+
+def get_image_path(name: str) -> str:
+    return os.path.join(get_upload_folder(), name)
+
+
+def get_weight_path() -> str:
+    root = get_project_root()
+    return os.path.join(root, "static/yolo_weight/weight.pt")
