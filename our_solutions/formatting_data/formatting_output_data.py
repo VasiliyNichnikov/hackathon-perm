@@ -21,12 +21,15 @@ def write_counts_to_file(counts, output_file):
 
 if __name__ == '__main__':
     for root, dirs, files in os.walk(get_path_to_folder_for_predict_data()):
-        for file in files:
+        for index_file, file in enumerate(files):
             file_path = os.path.join(root, file)
             counts = count_class_values(file_path)
             name_new_folder = os.path.basename(root)
             output_folder_path = get_path_to_folder_for_out_data(name_new_folder)
             if not os.path.exists(output_folder_path):
                 os.makedirs(output_folder_path)
-            output_file = os.path.join(output_folder_path, f'{file}')
+            frames_output_path = f'{output_folder_path}/frames_output'
+            if not os.path.exists(frames_output_path):
+                os.makedirs(frames_output_path)
+            output_file = os.path.join(frames_output_path, f'{file}')
             write_counts_to_file(counts, output_file)
