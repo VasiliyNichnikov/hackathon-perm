@@ -12,3 +12,15 @@ def get_no_sorted_data_path(name):
 
 def get_path_to_folder_for_transformed_data(name):
     return os.path.join(get_project_root(), f'static/transformed_data/{name}')
+
+
+def get_path_to_folder_for_predict_data():
+    return os.path.join(get_project_root(), f'static/runs_predict')
+
+
+def get_path_to_folder_for_out_folder():
+    return os.path.join(get_project_root(), f'static/out_data')
+
+
+def get_path_to_folder_for_out_data(name):
+    return os.path.join(get_project_root(), f'static/out_data/{name}')
