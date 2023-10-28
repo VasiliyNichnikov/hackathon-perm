@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-
-<head>
+{% extends "base.html" %}
+{% block header %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,35 +15,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{% endblock %}
 
-</head>
-<body>
-
-    <main>
-        <div class="px-4 py-5 my-5 text-center">
-            <div class="py-5">
-                <h1 class="t1 display-4 fw-bold">ТБО Аналитика</h1>
-                <div class="col-lg-6 mx-auto">
-                    <p class="t2 display-5 fw-bold text-body-emphasis">Для демонстрации работы выберете видеофайл формата mp4 или введите ссылку на видео</p>
-                    <div class="i1 input-group mb-3">
-                        <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">Ссылка на видео</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" class="b1 btn btn-primary btn-lg px-4 gap-3 rounded-pill mr-4">Выбрать файл</button>
-                        <form action="analytics.html">
-                            <button type="submit" class="b2 btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold rounded-pill">Начать</button>
-                        </form>
-                    </div>
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <div class="py-5">
+        <h1 class="t1 display-4 fw-bold">ТБО Аналитика</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="t2 display-5 fw-bold text-body-emphasis">Для демонстрации работы выберете видеофайл формата mp4
+                или введите ссылку на видео</p>
+            <div class="i1 input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Ссылка на видео</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <div class="mb-3">
+                    <form action="/upload_video" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" autocomplete="off" value="Выбрать файл"
+                               class="b1 btn btn-primary btn-lg px-4 gap-3 rounded-pill mr-4">
+                        <button type="submit" class="b2 btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold rounded-pill">
+                            Начать
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </main>
-
-    
-             
-
-</body>
-</html>
+    </div>
+</div>
+{% endblock %}

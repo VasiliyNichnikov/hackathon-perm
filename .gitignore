@@ -340,3 +340,6 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/python,rider,flask
 .idea/
+
+app/.env
+/app/static/
