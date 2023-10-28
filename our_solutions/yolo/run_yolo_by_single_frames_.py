@@ -6,7 +6,7 @@ import os
 from our_solutions.paths import get_weight_yolo, \
     find_frames_rgb_paths, get_path_for_yolo_style, get_output_yolo_data_path, get_name_folder_for_pred_data
 
-model = YOLO(get_path_for_yolo_style(get_weight_yolo(name='best_28')))
+model = YOLO(get_path_for_yolo_style(get_weight_yolo(name='best_27')))
 
 model.fuse()
 

@@ -27,16 +27,28 @@ def count_all_wastes(class_counts, output_file, divider):
                 class_counts[id_line] += int(line) // divider
     return class_counts
 
+
 def generate_txt_all_wastes(output_folder_path, class_counts):
     name_file_to_save = f"output.txt"
     with open(os.path.join(output_folder_path, name_file_to_save), 'w') as file:
         for count in class_counts:
             file.write(f'{count}\n')
 
+def generate_new_txt_all_wastes(output_folder_path, class_counts, lengt):
+    name_file_to_save = f"output_new.txt"
+    with open(os.path.join(output_folder_path, name_file_to_save), 'w') as file:
+        for count in class_counts:
+            file.write(f'{count // (23)}\n')
+
+
+def new_version_count_all_wastes(class_counts, output_file):
+    return count_all_wastes(class_counts, output_file, 1)
+
 
 if __name__ == '__main__':
     for root, dirs, files in os.walk(get_path_to_folder_for_predict_data()):
         class_counts = [0, 0, 0, 0]
+        class_counts_new_version = [0, 0, 0, 0]
         if len(files) != 0:
             final_path_to_count_all = ''
             for index_file, file in enumerate(files):
@@ -52,8 +64,15 @@ if __name__ == '__main__':
                     os.makedirs(frames_output_path)
                 output_file = os.path.join(frames_output_path, f'{file}')
                 write_counts_to_file(counts, output_file)
+
+                class_counts_new_version = new_version_count_all_wastes(class_counts_new_version, output_file)
+
                 if (index_file + 1) % 23 == 0:
                     class_counts = count_all_wastes(class_counts, output_file, 1)
                 elif (index_file + 1) == len(files):
                     class_counts = count_all_wastes(class_counts, output_file, 2)
+
             generate_txt_all_wastes(final_path_to_count_all, class_counts)
+            generate_new_txt_all_wastes(final_path_to_count_all, class_counts_new_version, len(files))
+
+
