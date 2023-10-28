@@ -28,7 +28,7 @@ def count_all_wastes(class_counts, output_file, divider):
     return class_counts
 
 def generate_txt_all_wastes(output_folder_path, class_counts):
-    name_file_to_save = f"frames_output.txt"
+    name_file_to_save = f"output.txt"
     with open(os.path.join(output_folder_path, name_file_to_save), 'w') as file:
         for count in class_counts:
             file.write(f'{count}\n')
