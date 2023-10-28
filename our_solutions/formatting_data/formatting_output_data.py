@@ -19,12 +19,12 @@ def write_counts_to_file(counts, output_file):
             file.write(f'{count}\n')
 
 
-def count_all_wastes(class_counts, output_file):
+def count_all_wastes(class_counts, output_file, divider):
     with open(output_file, 'r') as f:
         lines = f.readlines()
         for id_line, line in enumerate(lines):
             if id_line in range(0, 4):
-                class_counts[id_line] += int(line)
+                class_counts[id_line] += int(line) // divider
     return class_counts
 
 def generate_txt_all_wastes(output_folder_path, class_counts):
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 output_file = os.path.join(frames_output_path, f'{file}')
                 write_counts_to_file(counts, output_file)
                 if (index_file + 1) % 23 == 0:
-                    class_counts = count_all_wastes(class_counts, output_file)
+                    class_counts = count_all_wastes(class_counts, output_file, 1)
                 elif (index_file + 1) == len(files):
-                    class_counts = count_all_wastes(class_counts, output_file)
+                    class_counts = count_all_wastes(class_counts, output_file, 2)
             generate_txt_all_wastes(final_path_to_count_all, class_counts)
