@@ -22,23 +22,22 @@
     <div class="py-5">
         <h1 class="t1 display-4 fw-bold">ТБО Аналитика</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="t2 display-5 fw-bold text-body-emphasis">Для демонстрации работы выберете видеофайл формата mp4
-                или введите ссылку на видео</p>
-            <div class="i1 input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Ссылка на видео</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <p class="t2 display-5 fw-bold text-body-emphasis">
+                Для демонстрации работы выберете видеофайл или изображение
+            </p>
+
+            <div class="d-grid gap-2  justify-content-center w-100">
                 <div class="mb-3">
                     <form action="/upload_video" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" autocomplete="off" value="Выбрать файл"
-                               class="b1 btn btn-primary btn-lg px-4 gap-3 rounded-pill mr-4">
-                        <button type="submit" class="b2 btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold rounded-pill">
-                            Начать
-                        </button>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                              <input type="file" name="file" autocomplete="off" class="custom-file-input" id="inputGroupFile04">
+                              <label class="custom-file-label" for="inputGroupFile04">Выберете файл</label>
+                            </div>
+                            <div class="input-group-append">
+                              <button type="submit" class="b2 btn btn-outline-info px-4 me-sm-3 fw-bold" type="button">Начать</button>
+                            </div>
+                          </div>
                     </form>
                 </div>
             </div>
