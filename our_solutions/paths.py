@@ -57,6 +57,13 @@ def get_output_yolo_data_path(name: str) -> str:
     file_path = os.path.join(path_folder, name)
     return get_path_for_yolo_style(file_path)
 
+def runs_predict_for_all_frame(name: str) -> str:
+    path_folder = os.path.join(get_project_root(), f'static/runs_predict_for_all_frame')
+    if not os.path.exists(path_folder):
+        os.makedirs(path_folder)
+    file_path = os.path.join(path_folder, name)
+    return get_path_for_yolo_style(file_path)
+
 
 def get_name_folder_for_pred_data(path):
     return os.path.basename(os.path.normpath(os.path.dirname(path)))
