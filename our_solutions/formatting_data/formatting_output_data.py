@@ -34,11 +34,25 @@ def generate_txt_all_wastes(output_folder_path, class_counts):
         for count in class_counts:
             file.write(f'{count}\n')
 
+
 def generate_new_txt_all_wastes(output_folder_path, class_counts, lengt):
+    # мой вариант
+    if lengt // 23 < 1:
+        divisor = 1
+    elif (lengt % 23) / 23 < 0.5:
+        divisor = 23
+    elif (lengt % 23) / 23 > 0.5:
+        divisor = 23 + 1
+    # мой вариант андрея
+    # -----------------
+    # вариант андрея
+    # divisor = 23
+    # вариант андрея
+    print('divisor', divisor)
     name_file_to_save = f"output_new.txt"
     with open(os.path.join(output_folder_path, name_file_to_save), 'w') as file:
         for count in class_counts:
-            file.write(f'{count // (23)}\n')
+            file.write(f'{count // divisor}\n')
 
 
 def new_version_count_all_wastes(class_counts, output_file):
@@ -74,5 +88,3 @@ if __name__ == '__main__':
 
             generate_txt_all_wastes(final_path_to_count_all, class_counts)
             generate_new_txt_all_wastes(final_path_to_count_all, class_counts_new_version, len(files))
-
-
