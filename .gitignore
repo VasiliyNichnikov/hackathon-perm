@@ -343,3 +343,5 @@ fabric.properties
 
 app/.env
 /app/static/
+
+/our_solutions/static/yolo_weight/best_28.pt

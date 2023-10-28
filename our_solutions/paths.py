@@ -38,9 +38,9 @@ def get_path_to_input_data():
     return os.path.join(get_project_root(), f'static/input_data')
 
 
-def find_frames_rgb_paths(root_dir):
+def find_frames_rgb_paths() -> list[str]:
     frames_rgb_paths = []
-    for root, dirs, files in os.walk(root_dir):
+    for root, dirs, files in os.walk(get_path_to_input_data()):
         if 'frames_rgb' in dirs:
             frames_rgb_paths.append(get_path_for_yolo_style(os.path.join(root, 'frames_rgb')))
     return frames_rgb_paths
@@ -49,7 +49,14 @@ def find_frames_rgb_paths(root_dir):
 def get_path_for_yolo_style(path):
     return path.replace("\\", '/')
 
-def save_yolo_data():
-    return get_path_for_yolo_style(os.path.join(get_project_root(), f'static/runs_predict'))
+
+def get_output_yolo_data_path(name: str) -> str:
+    path_folder = os.path.join(get_project_root(), f'static/runs_predict')
+    if not os.path.exists(path_folder):
+        os.makedirs(path_folder)
+    file_path = os.path.join(path_folder, name)
+    return get_path_for_yolo_style(file_path)
+
+
 def get_name_folder_for_pred_data(path):
     return os.path.basename(os.path.normpath(os.path.dirname(path)))
