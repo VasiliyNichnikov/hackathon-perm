@@ -15,15 +15,28 @@ def get_path_to_folder_for_transformed_data(name):
 
 
 def get_path_to_folder_for_predict_data():
+    directory = 'static/runs_predict'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     return os.path.join(get_project_root(), f'static/runs_predict')
 
 
-def get_path_to_folder_for_out_folder():
-    return os.path.join(get_project_root(), f'static/out_data')
+def get_path_to_folder_for_predict_data_for_all_frames():
+    return os.path.join(get_project_root(), f'static/runs_predict_for_all_frame')
 
 
 def get_path_to_folder_for_out_data(name):
-    return os.path.join(get_project_root(), f'static/out_data/{name}')
+    directory = 'static/out_data'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    return os.path.join(get_project_root(), f'{directory}/{name}')
+
+
+def get_path_to_folder_for_out_data_for_all_frame(name):
+    directory = 'static/out_data_for_all_frame'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    return os.path.join(get_project_root(), f'{directory}/{name}')
 
 
 def get_path_to_folder_data_rgb(name):
@@ -56,6 +69,7 @@ def get_output_yolo_data_path(name: str) -> str:
         os.makedirs(path_folder)
     file_path = os.path.join(path_folder, name)
     return get_path_for_yolo_style(file_path)
+
 
 def runs_predict_for_all_frame(name: str) -> str:
     path_folder = os.path.join(get_project_root(), f'static/runs_predict_for_all_frame')

@@ -1,6 +1,10 @@
-from our_solutions.paths import get_path_to_input_data, get_name_folder_for_pred_data
 import os
 
-#%%
-path = 'C:/Users/filip/PycharmProjects/hackathon-perm/our_solutions/static/test_runs_predict'
-print(get_name_folder_for_pred_data(path))
+# Ваш путь
+path = 'путь_к_вашей_папке/последняя_папка'
+
+# Получаем путь без последней папки
+path_without_last_folder = os.path.dirname(path)
+
+# Выводим результат
+print(path_without_last_folder)
