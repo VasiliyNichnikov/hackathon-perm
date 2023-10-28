@@ -81,3 +81,20 @@ def runs_predict_for_all_frame(name: str) -> str:
 
 def get_name_folder_for_pred_data(path):
     return os.path.basename(os.path.normpath(os.path.dirname(path)))
+
+
+def get_name_folder_for_input_video():
+    directory = os.path.join(get_project_root(), f'static/input_video')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    file_list = []
+    for file in os.listdir(directory):
+        if os.path.isfile(os.path.join(directory, file)):
+            file_list.append(f'{directory}/{file}')
+    return file_list
+
+def get_name_folder_for_output_video():
+    output_folder = os.path.join(get_project_root(), f'static/output_video')
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    return os.path.join(output_folder)
