@@ -18,6 +18,9 @@
 {% endblock %}
 
 {% block content %}
+<div class="block-1 d-flex">
+
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-auto bg-light sticky-top">
@@ -38,52 +41,31 @@
                         </button>
                     </li>
                     <hr>
-                    <li class="nav-item">
-                        <button id="btn-2" class="nav-link py-3 px-2">
-                            <i class="bi-bar-chart-line fs-1" data-toggle="tooltip" data-placement="right"
-                               title="Статистика"></i>
-                        </button>
-                    </li>
                 </ul>
             </div>
         </div>
         <div class="col-sm min-vh-100">
-            <div class="block-1 d-flex">
-                <div class="block-1 col-sm-9 p-3 object-fit-contain position-relative">
-                    <div class="row">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card">
                         {% if image_file %}
-                            <img class="rounded float-start" src="{{ url_for('static', filename=image_file) }}" alt="Loaded image" width="50%" height="auto">
+                            <img class="rounded float-start" src="{{ url_for('static', filename=image_file) }}" alt="Loaded image">
                         {% endif %}
                     </div>
                 </div>
-                <div class="block-2 col-sm-3 h-100 p-3 overflow-auto">
-                    <div class="list-group-checkable d-grid gap-2">
-                        <label class="l1 list-group-item rounded-3 p-3 border border-primary" for="listGroupCheckableRadios1">
-                            <strong>Данные с изображения:</strong>
-                            {% for message in messages %}
-                                <span class="d-block small opacity-50">{{ message }}</span>
-                            {% endfor %}
-                        </label>
-                    </div>
-
-                    {% if image_chart_file %}
-                        <img class="rounded float-start" src="{{ url_for('static', filename=image_chart_file) }}" alt="Loaded image">
-                    {% endif %}
-                </div>
-            </div>
-            <div class="block-3 container p-3" style="display: none;">
-                <div class="row">
-                    <div class="mx-auto col-lg-6">
-                        Бар-чарт с общим кол-вом предметов по каждой категории
-                        <div class="d-flex justify-content-center">
-                            <img src="" alt="">
+                <div class="col">
+                    <div class="card-body">
+                        <div class="list-group-checkable d-grid gap-2">
+                            <label class="l1 list-group-item rounded-3 p-3 border border-primary">
+                                <strong>Данные с изображения:</strong>
+                                {% for message in messages %}
+                                    <span class="d-block small opacity-50">{{ message }}</span>
+                                {% endfor %}
+                            </label>
                         </div>
-                    </div>
-                    <div class="mx-auto col-lg-6">
-                        Пай-чарт процент перерабатываемого, сжигаемого и тд
-                        <div class="d-flex justify-content-center">
-                            <img src="" alt="">
-                        </div>
+                        {% if image_chart_file %}
+                            <img class="rounded float-start" src="{{ url_for('static', filename=image_chart_file) }}" alt="Loaded image">
+                        {% endif %}
                     </div>
                 </div>
             </div>
