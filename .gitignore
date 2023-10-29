@@ -345,3 +345,4 @@ app/.env
 /app/static/
 
 /app/static/yolo_weight/weight.pt
+/our_solutions/static/
