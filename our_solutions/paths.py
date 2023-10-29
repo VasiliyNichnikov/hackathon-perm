@@ -1,6 +1,12 @@
 import os
 from pathlib import Path
 
+def get_path_to_all_save_txt():
+    return os.path.join(get_project_root(), f'static/out_data/video0/output_new.txt')
+def get_path_to_save_txt():
+    return os.path.join(get_project_root(), f'static/out_data/video0')
+def get_path_to_csv():
+    return os.path.join(get_project_root(), f'static/out_data/video0/output')
 
 def get_project_root():
     return Path(__file__).parent

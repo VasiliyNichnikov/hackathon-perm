@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 # Создание приложения
 app = Flask(__name__)
